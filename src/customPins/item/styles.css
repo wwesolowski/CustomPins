@@ -1,0 +1,21 @@
+.customPin {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+}
+
+.content {
+    position: absolute;
+    background-color: black;
+    color: white;
+    top: 110%;
+    left: 60%;
+    padding: 10px;
+    z-index: 1;
+}
+
+.content img {
+    width: 100%;
+    height: 100%;
+}
