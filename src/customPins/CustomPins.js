@@ -4,7 +4,9 @@ const CustomPins = ({ img, children }) => {
     
   return (
     <div className="customPins">
-      <img src={img} alt="" />
+      <div className="imgSection">
+        <img src={img} alt="" />
+      </div>
       <div>
         {children}
       </div>
