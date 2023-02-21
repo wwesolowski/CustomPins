@@ -6,13 +6,14 @@ import { CustomPinsContext } from "./provider/CustomPinsProvider";
 import { useMeasure } from "react-use";
 
 const CustomPins = ({ img: Img, children }) => {
-  const [, setCurrentWidth] = useContext(CustomPinsContext);
+const { setCurrentWidth, setCurrentHeight } = useContext(CustomPinsContext);
 
-  const [ref, { width }] = useMeasure();
+  const [ref, { width, height }] = useMeasure();
 
   useEffect(() => {
     setCurrentWidth(width);
-  }, [setCurrentWidth, width]);
+    setCurrentHeight(height)
+  }, [width, height, setCurrentWidth, setCurrentHeight]);
 
   return (
     <div className="customPins">

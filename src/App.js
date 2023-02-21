@@ -1,6 +1,6 @@
 import "./App.css";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import CustomPin from "./customPins/item/CustomPin";
 import CustomPins from "./customPins/CustomPins";
@@ -12,13 +12,16 @@ function App() {
 
   const imgSrc = "https://www.panstwaswiata.pl/mapy/mapa_bialegostoku.jpg";
 
-  const onLoadImg = ({ target }) => {
-    setMaxHeight(target.offsetHeight);
-    setMaxWidth(target.offsetWidth);
+  const ref = useRef(null);
+
+  const onLoadImg = () => {
+    setMaxHeight(ref.current.naturalHeight);
+    setMaxWidth(ref.current.naturalWidth);
   };
 
   const Img = () => (
     <img
+      ref={ref}
       src={imgSrc}
       alt=""
       style={{ width: "100%", height: "auto" }}
@@ -26,21 +29,13 @@ function App() {
     />
   );
 
-  const ref = useRef(Img);
-
-  useEffect(() => {
-    if (ref.current) {
-      console.log(`hookRef div width: ${ref.current.clientWidth}`);
-    }
-  }, []);
-
   return (
     <div className="App">
       <CustomPinsProvider>
         <CustomPins img={Img}>
           <CustomPin
-            top="40%"
-            left="70%"
+            top={150}
+            left={450}
             maxHeight={maxHeight}
             maxWidth={maxWidth}
           >
@@ -53,8 +48,8 @@ function App() {
             </div>
           </CustomPin>
           <CustomPin
-            top="20%"
-            left="30%"
+            top={400}
+            left={700}
             maxHeight={maxHeight}
             maxWidth={maxWidth}
           >
